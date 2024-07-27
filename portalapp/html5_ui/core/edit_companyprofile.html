@@ -1,0 +1,285 @@
+{% extends 'core/layouts/base.html' %}
+
+{% block title %} Company Profile {% endblock title %}
+
+{% block content %}
+
+<div class="header pb-6 d-flex align-items-center" 
+     style="min-height: 500px; background-image: url(/static/assets/img/theme/backgrounds/corporate-office1.jpg); background-size: cover; background-position: center bottom;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-default opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white"> 
+          {{ request.user.profile.tenant.companyName }}
+        </h1>
+        <p class="text-white mt-0 mb-5">This is your company profile page. You can manage the company's information, branding, look and feel for your company here.</p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- Page content -->
+<div class="container-fluid mt--9">
+  <div class="row">
+
+
+    <div class="col-xl-8 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Company profile </h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{{ request.path }}" class="needs-validation" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            <!-- {{ form.as_p }} --> 
+
+            <h6 class="heading-small text-muted mb-4">Company information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col">
+                    {{ form.non_field_errors }}
+                    {% for hidden_field in form.hidden_fields %}
+                      {{ hidden_field.errors }}
+                      {{ hidden_field }}
+                    {% endfor %}  
+                    {% for f in form.visible_fields %}
+                         {{ f.errors }}
+                    {% endfor %}  
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <!-- COMPANYNAME Field -->
+                    <label class="form-control-label" for="{{ form.companyName.auto_id }}">{{ form.companyName.label }}</label>
+                    {{ form.companyName }}
+                 </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <!-- WEBSITE Field -->
+                    <label class="form-control-label" for="{{ form.website.auto_id }}">{{ form.website.label }}</label>
+                    {{ form.website }}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- COMPANY SLOGAN Field -->
+                    <label class="form-control-label" for=" {{ form.companySlogan.auto_id }}"> {{ form.companySlogan.label }}</label>
+                    {{ form.companySlogan }}
+                  </div>
+                </div>
+              </div>
+
+              
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <!-- PRIMARY ACCOUNT HOLDER NAME Field -->
+                    <label class="form-control-label" for="{{ form.primary_account_name.auto_id }}">{{ form.primary_account_name.label }}</label>
+                    {{ form.primary_account_name  }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <!-- PRIMARY ACCOUNT HOLDER EMAIL Field -->
+                    <label class="form-control-label" for="{{ form.primary_account_email.auto_id }}">{{ form.primary_account_email.label }}</label>
+                    {{ form.primary_account_email }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+
+
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- ADDRESS Field -->
+                    <label class="form-control-label" for="{{ form.address.auto_id }}">{{ form.address.label }}</label>
+                    {{ form.address }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- CITY Field -->
+                    <label class="form-control-label" for="{{ form.city.auto_id }}">{{ form.city.label }}</label>
+                    {{ form.city }}
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- COUNTRY Field -->
+                    <label class="form-control-label" for="{{ form.country.auto_id }}">{{ form.country.label }}</label>
+                    {{ form.country }}
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- POSTALCODE Field -->
+                    <label class="form-control-label" for="{{ form.postalcode.auto_id }}">{{ form.postalcode.label }}</label>
+                    {{ form.postalcode }}
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- STATEPROVINCE Field -->
+                    <label class="form-control-label" for="{{ form.stateprovince.auto_id }}">{{ form.stateprovince.label }}</label>
+                    {{ form.stateprovince }}
+                  </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- TELEPHONE Field -->
+                    <label class="form-control-label" for="{{ form.telephone.auto_id }}">{{ form.telephone.label }}</label>
+                    {{ form.telephone }}
+                  </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <!-- FAX Field -->
+                    <label class="form-control-label" for="{{ form.fax.auto_id }}">{{ form.fax.label }}</label>
+                    {{ form.fax }}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">Billing Information</h6>
+
+           <!-- Billing Address -->
+
+          <div class="pl-lg-4">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <!-- PRIMARY BILLING CONTACT NAME Field -->
+                  <label class="form-control-label" for="{{ form.billing_contact_name.auto_id }}">{{ form.billing_contact_name.label }}</label>
+                  {{ form.billing_contact_name }}
+                </div>
+              </div>
+            </div>
+
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="form-group">
+                  <!-- PRIMARY BILLING CONTACT Address Field --> 
+                  <label class="form-control-label" for="{{ form.billing_contact_address.auto_id }}">{{ form.billing_contact_address.label }}</label>
+                   {{ form.billing_contact_address }}
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-lg-4">
+                 <div class="form-group">
+                   <!-- PRIMARY BILLING City Field -->
+                   <label class="form-control-label" for="{{ form.billing_contact_city.auto_id }}">{{ form.billing_contact_city.label }}</label>
+                   {{ form.billing_contact_city }}
+                 </div>
+               </div>
+               <div class="col-lg-4">
+                 <div class="form-group">
+                  <!-- PRIMARY BILLING Country Field --> 
+                  <label class="form-control-label" for="{{ form.billing_contact_country.auto_id }}">{{ form.billing_contact_country.label }}</label>
+                   {{ form.billing_contact_country }}
+                 </div>
+               </div>
+               <div class="col-lg-4">
+                 <div class="form-group">
+                   <!-- PRIMARY BILLING postal code Field -->
+                   <label class="form-control-label" for="{{ form.billing_contact_postalcode.auto_id }} ">{{ form.billing_contact_postalcode.label }} </label>
+                   {{ form.billing_contact_postalcode }} 
+                 </div>
+               </div>
+              </div>
+              <div class="row">
+               <div class="col-lg-4">
+                 <div class="form-group">
+                   <!-- PRIMARY BILLING telephone Field -->
+                   <label class="form-control-label" for=" {{ form.billing_contact_telephone.auto_id }}"> {{ form.billing_contact_telephone.label }}</label>
+                   {{ form.billing_contact_telephone }}
+                 </div>
+               </div>
+
+
+               <div class="col-lg-4">
+                 <div class="form-group">
+                    <!-- PRIMARY BILLING Email Field -->
+                   <label class="form-control-label" for="{{ form.billing_contact_email.auto_id }}">{{ form.billing_contact_email.label }}</label>
+                   {{ form.billing_contact_email }}
+                 </div>
+               </div>
+               </div>
+              </div>
+
+              
+              <hr class="my-4" />
+
+              <!-- Branding -->
+              <h6 class="heading-small text-muted mb-4">Branding</h6>
+
+              <div class="pl-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="{{ form.companyLogo.auto_id }}">{{ form.companyLogo.label }}</label><br/>
+                  <a href="#">
+                    <span class="avatar avatar-lg rounded-circle">
+                      {% if request.user.profile.tenant.companyLogo_url %}
+                        <img alt="Change profile picture" src="{{ request.user.profile.tenant.companyLogo_url }}">
+                      {% endif %}
+                    </span>
+                  <br/><div class="form-control">{{ form.companyLogo }}</div>
+                </div>
+              </div>
+
+              <div class="row align-items-center">
+                <div class="col-8">
+                </div>
+                <div class="col-4 text-right">
+                  <input type="submit" class="btn btn-sm btn-primary" value="Save Changes"/>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "core/includes/footer/footer.html" %}
+
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

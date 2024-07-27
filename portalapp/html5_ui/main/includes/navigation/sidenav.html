@@ -1,0 +1,35 @@
+
+<!-- Add all your left navigation menu items here.
+     - Use <li class="nav-item"> tag
+    -  USe <HR class="my-3"> to get a divider line
+
+-->
+
+<div class="navbar-inner mt-0">
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+      <!-- Nav items -->
+
+    <hr class="my-3">
+    <h6 class="navbar-heading p-0 text-muted">
+        <span class="docs-normal">{{ ApplicationSettings.APP_TITLE }}</span>
+    </h6>
+    <ul class="navbar-nav mb-md-3">    
+    <li class="nav-item">
+        <a class="nav-link active" href="/icons.html">
+            <i class="ni ni-planet text-orange"></i>
+            <span class="nav-link-text">Main Entity</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href="/icons.html">
+            <i class="ni ni-planet text-orange"></i>
+            <span class="nav-link-text">Main Entity</span>
+        </a>
+    </li>
+    </ul>
+</div>
+
+<!-- Including links from sample app. Follow this convention to keep things clean -->
+{% include "sample/includes/navigation/sidenav.html" %}

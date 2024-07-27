@@ -1,0 +1,36 @@
+{% load i18n %}
+
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+  <div class="scrollbar-inner">
+    <!-- Brand -->
+    <div class="sidenav-header  align-items-center">
+      <a class="navbar-brand" href="/">
+        <img src="{{ ApplicationSettings.PRIMARY_LOGO_URL }}" class="navbar-brand-img" alt="{{ ApplicationSettings.APP_TITLE }} - {{ ApplicationSettings.APP_SLOGAN }}">
+      </a>
+    </div>
+
+    <!-- CORE Navigation-->
+    <div class="navbar-inner">
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Nav items -->
+        <ul class="navbar-nav">
+          <li class="nav-item m-0">
+            <a class="nav-link active" href="/">
+              <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">{% trans "Dashboard" %}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- side navigation for main application -->
+    {% include "main/includes/navigation/sidenav.html" %}
+
+    <!-- side navigation for authentication application -->
+    {% include "authentication/includes/navigation/sidenav.html" %}
+
+
+    </div>  
+</nav>

@@ -1,0 +1,40 @@
+<!--
+
+    TABLE_DESC
+    TABLE_LIST
+    TABLE_COLS_FILE
+    TABLE_ROW_FILE
+-->
+<div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">{{ TABLE_DESC }}</h3>
+          </div>
+          <!-- Light table -->
+          <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                    {% include TABLE_COLS_FILE %}
+                </tr>
+              </thead>
+              <tbody class="list">
+                {% for member in TABLE_LIST %}     
+                  <tr>
+                    {% include TABLE_ROW_FILE %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+              </table>
+              {% include "core/includes/ui_elements/tables/pagination.html" %}
+          </div>
+          <!-- Card footer -->
+        </div>
+        {% include "core/includes/footer/footer.html" %}
+      </div>
+    </div>
+  </div>
+  

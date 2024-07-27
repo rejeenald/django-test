@@ -1,0 +1,48 @@
+{% load i18n %}
+
+<th scope="row">
+    <div class="media align-items-center">
+        <a href="#" class="avatar rounded-circle mr-3">
+        {% if member.profilePicture_url %}
+            <img alt="{{ member.userObject.first_name }} {{member.userObject.last_name}}" src="{{ member.profilePicture_url }}">
+        {% else %}
+            <img alt="{{ member.userObject.first_name }} {{member.userObject.last_name}}" src="/static/core/assets/img/theme/team-4.jpg">
+        {% endif %}
+        </a>
+        <div class="media-body">
+        <span class="name mb-0 text-sm">{{ member.userObject.first_name }} {{ member.userObject.last_name}}</span>
+        </div>
+    </div>
+</th>
+<td class="budget">
+    {% if member.userObject.email %}
+        Email ({{ member.userObject.email }}) <br/>
+    {% endif %}
+    {% if member.telephone %}
+        Phone ({{ member.telephone }})
+    {% endif %}
+</td>
+<td>
+    <span class="badge badge-dot mr-4">
+        <span class="status">{{ member.userType }}</span>
+    </span>
+</td>
+<td>
+    <div class="avatar-group">
+        {{ member.userObject.last_login }}
+    </div>
+</td>
+<td>
+    <div class="d-flex align-items-center">
+    {% if member.notes %}
+        {{ member.line_split_notes|safe}}
+    {% else %}
+        {% trans "no notes available" %}
+    {% endif %}
+    </div>
+</td>
+<td class="text-right">
+{% with ACTION_FILE="authentication/includes/actions/team-actions.html" %}
+    {% include "core/includes/ui_elements/tables/action_menu.html" %}
+{% endwith %}
+</td>

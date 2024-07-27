@@ -1,0 +1,35 @@
+<!-- User navigation -->
+<!-- Collapse -->
+<div class="collapse navbar-collapse pt-0" id="sidenav-collapse-main">
+<!-- Nav items -->
+    <hr class="my-3" />
+    <h6 class="navbar-heading p-0 text-muted">
+        <span class="docs-normal">User: {{ request.user.first_name }} {{ request.user.last_name }}</span>
+    </h6>
+    <ul class="navbar-nav">      
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'userprofile' %}">
+                <i class="fa fa-user text-blue p-1" aria-hidden="true"></i>
+                <span class="nav-link-text pl-3">My Profile</span>
+            </a>
+        </li>            
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'companyprofile' %}">
+                <i class="fa fa-building text-black p-1" aria-hidden="true"></i>
+                <span class="nav-link-text pl-3">My Company Profile</span>
+            </a>
+        </li>            
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'myteam' %}">
+                <i class="fa fa-users text-blue pr-3" aria-hidden="true"></i>
+                <span class="nav-link-text">My Team</span>
+            </a>
+        </li>            
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+                <i class="ni ni-user-run text-red"></i>
+                <span class="nav-link-text">Logout</span>
+            </a>
+        </li>            
+    </ul>
+</div>

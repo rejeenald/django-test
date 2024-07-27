@@ -1,0 +1,20 @@
+{% extends 'core/layouts/base.html' %}
+{% load i18n %}
+
+{% block title %} {% trans "Team" %} {% endblock title %}
+
+{% block content %}
+
+{% with PAGE_TITLE="Team" HEADER_NAV_FILE="authentication/tiles/team/team-header.html" %}
+  {% include "core/includes/ui_elements/page/page_header.html" %}
+{% endwith %}
+
+<!-- Page content -->
+{% with PAGE_DESC="Team members within the organization" TABLE_COLS_FILE="authentication/tiles/team/team-list-table-cols.html" TABLE_LIST=request.user.profile.tenant.team.all TABLE_ROW_FILE="authentication/tiles/team/team-list-table-row.html" %}
+  {% include "core/includes/ui_elements/tables/standard_table.html" %}
+{% endwith %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
